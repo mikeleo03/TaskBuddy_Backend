@@ -41,25 +41,18 @@ router.post("/", async(req, res) => {
 // PUT
 router.put("/:id/update", async (req, res) => {
     const id = req.params.id
-    try {
-        const event = await Event.findOne({_id : id})
-        if (event) {
-            Object.assign(event, req.body);
-            event.save((err, event) => {
-                if (err) {
-                    handleError(err, res)
-                } else {
-                    res.status(200).json(event)
-                }
-            })
-        }   
-        if (!event) {
-            res.status(404).json({error: "event is not found"})
+    Event.findOneAndUpdate({_id : id}, req.body, {new: true})
+    .then(data => { 
+        if (data) {
+            res.status(200).json("Event is updated")
+        } else {
+            res.status(404).send("Event not found")
         }
-    } catch (err) {
-        console.log(err)
-        handleError(err,res)
-    }
+    })
+    .catch(err => {res.status(500).send({
+        message : err.message || "Unknown Error",
+        data: null,
+    })})
 })
 
 // DELETE
