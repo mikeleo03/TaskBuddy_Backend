@@ -6,7 +6,7 @@ const router = express.Router();
 router.use(express.json());
 
 // GET ROUTE
-router.get("/", async(req, res)=>{
+router.get("/", async(req, res) => {
     const events = await Event.find({});
     try {
        res.status(200).json(events)
@@ -15,7 +15,7 @@ router.get("/", async(req, res)=>{
     }
 });
 
-router.get("/:id/show", async(req, res)=>{
+router.get("/:id/show", async(req, res) => {
     const id =   req.params.id
     const event = await Event.findById(id);
  

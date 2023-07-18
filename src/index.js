@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
 import eventRoute from "./routes/eventRoute.js";
+import validateRoute from './routes/validateRoute.js';
 dotenv.config();
 const app = express();
 
@@ -31,6 +32,7 @@ app.use(cors({ origin: 'http://localhost:3000' }));
 // SECURE API
 const prefix = "/api";
 app.use(prefix + '/events', eventRoute)
+app.use(prefix + '/validate', validateRoute)
 
 //Connecting to DB
 read_env()
