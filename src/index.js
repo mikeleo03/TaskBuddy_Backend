@@ -26,7 +26,7 @@ const read_env = () => {
     return new Promise(executorFunction);
 }
 
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 // SECURE API
 const prefix = "/api";
