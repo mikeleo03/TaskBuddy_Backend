@@ -1,16 +1,14 @@
 import express from 'express';
-import bcrypt from 'bcrypt';
 
 const router = express.Router();
 router.use(express.json());
 
-const pass = 'password'; // Hashed password: 'password123'
+const pass = process.env.EDIT_PASS;
 
 router.post('/', async (req, res) => {
     const { password } = req.body;
   
     // Compare the entered password with the hashed password
-    // const passwordMatch = await bcrypt.compare(password, pass);
     const passwordMatch = (password === pass);
   
     if (passwordMatch) {
