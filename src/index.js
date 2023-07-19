@@ -27,7 +27,9 @@ const read_env = () => {
     return new Promise(executorFunction);
 }
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://planner-frontend-three.vercel.app'
+}));  
 
 // SECURE API
 const prefix = "/api";
