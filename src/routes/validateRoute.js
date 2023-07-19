@@ -11,7 +11,6 @@ router.post('/', async (req, res) => {
   
     // Compare the entered password with the hashed password
     // const passwordMatch = await bcrypt.compare(password, pass);
-    console.log(password);
     const passwordMatch = (password === pass);
   
     if (passwordMatch) {

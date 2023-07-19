@@ -30,7 +30,6 @@ router.get("/:id/show", async(req, res) => {
 router.post("/", async(req, res) => {    
     try {
         const newEvent = new Event(req.body);
-        console.log(newEvent);
         await newEvent.save();
         res.status(200).json(newEvent);
     } catch(err) {
