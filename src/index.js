@@ -28,14 +28,7 @@ const read_env = () => {
 }
 
 app.use(cors({
-  origin: function (origin, callback) {
-    const allowedOrigins = ['https://planner-frontend-three.vercel.app', 'http://localhost:3000'];
-    if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-    } else {
-        callback(new Error('Not allowed by CORS'));
-    }
-  }
+  origin: '*'
 }));
 
 // SECURE API
