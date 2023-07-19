@@ -16,7 +16,7 @@ router.get("/", async(req, res) => {
 });
 
 router.get("/:id/show", async(req, res) => {
-    const id =   req.params.id
+    const id = req.params.id || req.params._id
     const event = await Event.findById(id);
  
     try {
